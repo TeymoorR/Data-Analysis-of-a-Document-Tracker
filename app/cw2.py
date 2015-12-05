@@ -6,7 +6,6 @@ from classes.user_analysis import UserAnalysis
 import sys
 import getopt
 
-
 bd = BookData('data/issuu_full.json')
 dt = bd.build_data_frame()
 
@@ -57,30 +56,35 @@ def task_5(user_uuid, book_uuid):
     ra = UserAnalysis(dt)
     try:
         find_user_books = ra.find_user_books(user_uuid)
-        print("list of all the document UUID read by that visitor")
+        print("(a)list of all the document UUID read by that visitor")
         print(find_user_books)
 
         find_book_visitors = ra.find_book_visitors(book_uuid)
-        print(" list of all the visitor UUIDs that read that document")
+        print("(b)list of all the visitor UUIDs that read that document")
         print(find_book_visitors)
 
+    except Exception as err:
+        print((str(err)))
+
+
+def task_6(user_uuid, book_uuid):
+    ra = UserAnalysis(dt)
+    try:
         user_books_alike = ra.user_visitors_alike(user_uuid)
-        print("Similar users based on common book read")
+        print("(Also Like)Similar users based on common book read")
         print(user_books_alike)
 
         user_book_alike_sorted = ra.users_alike_sorted(user_uuid, ra.sorter)
-        print("user read same book ")
+        print("(d)Sorted by readership profile for sorting the documents")
         print(user_book_alike_sorted)
 
         visitors_books_alike = ra.book_visitors_alike(book_uuid)
-        print("Similar books also liked based on readership profile ")
+        print("(Also Like)Similar books based on user reader")
         print(visitors_books_alike)
 
         book_alike_sorted = ra.book_alike_sorted(book_uuid, ra.sorter)
-        print("The number of readers of the same document")
+        print("(e)Sorted by number of readers of the same document")
         print(book_alike_sorted)
-
-
 
     except Exception as err:
         print((str(err)))
@@ -129,8 +133,12 @@ def main(argv):
             # 938601f24509a9f1 , 110727005030-000000009cca70787e5fba1fda005c85
         else:
             task_5(user_uuid, doc_uuid)
-
-
+    elif int(task_id) == 6:
+        if (user_uuid == '') | (doc_uuid == ''):
+            print("Provide user_uuid or/and doc_uuid")
+            # 938601f24509a9f1 , 110727005030-000000009cca70787e5fba1fda005c85
+        else:
+            task_6(user_uuid, doc_uuid)
 
 
 if __name__ == "__main__":

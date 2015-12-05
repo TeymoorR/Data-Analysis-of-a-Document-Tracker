@@ -2,7 +2,6 @@ import operator
 
 
 class UserAnalysis:
-
     __labels = ["ts", "visitor_uuid", "visitor_source", "visitor_device", "visitor_useragent",
                 "visitor_ip", "visitor_country", "visitor_referrer", "env_type", "env_doc_id", "event_type",
                 "event_readtime", "subject_type", "subject_doc_id", "subject_page"]
@@ -12,7 +11,8 @@ class UserAnalysis:
 
     def find_user_books(self, visitor_uuid):
         """ Find User Books read by user uuid"""
-        readers = self.__book_data[(self.__book_data['event_type'] == "pagereadtime") | (self.__book_data['event_type'] == "read")]
+        readers = self.__book_data[
+            (self.__book_data['event_type'] == "pagereadtime") | (self.__book_data['event_type'] == "read")]
         user_books = readers[readers['visitor_uuid'] == visitor_uuid]
         return user_books[['env_doc_id']].drop_duplicates().to_dict()
 
@@ -39,7 +39,8 @@ class UserAnalysis:
 
     def find_book_visitors(self, book_uuid):
         """Find Book readers by book uuid"""
-        readers = self.__book_data[(self.__book_data['event_type'] == "pagereadtime") | (self.__book_data['event_type'] == "read")]
+        readers = self.__book_data[
+            (self.__book_data['event_type'] == "pagereadtime") | (self.__book_data['event_type'] == "read")]
         user_books = readers[readers['env_doc_id'] == book_uuid]
         return user_books[['visitor_uuid']].drop_duplicates().to_dict()
 
@@ -84,3 +85,4 @@ class UserAnalysis:
             readers_data[key] = self.__book_data[self.__book_data['visitor_uuid'] == key][:1].to_dict()
             readers_data[key]['total_time'] = readers_list[key]
         return readers_data
+

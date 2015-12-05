@@ -4,17 +4,17 @@ import pandas as pd
 
 class BrowserAnalysis:
 
-    __main_browsers = ["opera", "dalvik", "safari", "chrome", 'trident', 'gecko']
+    __main_browsers = ["opera", "dalvik", "safari", "chrome", 'trident', 'mozilla']
     __labels = ["ts", "visitor_uuid", "visitor_source", "visitor_device", "visitor_useragent",
                 "visitor_ip", "visitor_country", "visitor_referrer"]
 
     def __init__(self, book_data):
-        self.__book_data = book_data
-        self.__book_data = self.__book_data[self.__labels]
+        self.__document_data = book_data
+        self.__document_data = self.__document_data[self.__labels]
 
     def browser_usage(self):
         """ Group dataframe by visitor browser and counts distinct"""
-        browser_usage = self.__book_data['visitor_useragent'].value_counts()
+        browser_usage = self.__document_data['visitor_useragent'].value_counts()
         return browser_usage
 
     def browser_usage_plot(self):
