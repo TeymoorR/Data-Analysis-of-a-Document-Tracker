@@ -18,7 +18,7 @@ class Coverters:
         return out
 
     def json_to_csv_file(self, csv_filename, json_filename):
-        """  Helper function to conver JSON to CSV file"""
+        """  Helper function to convert JSON to CSV file"""
         with open(json_filename) as file:
             data = json.load(file)
 

@@ -70,21 +70,22 @@ def task_5(user_uuid, book_uuid):
 def task_6(user_uuid, book_uuid):
     ra = UserAnalysis(dt)
     try:
-        user_books_alike = ra.user_visitors_alike(user_uuid)
-        print("(Also Like)Similar users based on common book read")
-        print(user_books_alike)
 
         user_book_alike_sorted = ra.users_alike_sorted(user_uuid, ra.sorter)
         print("(d)Sorted by readership profile for sorting the documents")
         print(user_book_alike_sorted)
 
-        visitors_books_alike = ra.book_visitors_alike(book_uuid)
-        print("(Also Like)Similar books based on user reader")
-        print(visitors_books_alike)
-
         book_alike_sorted = ra.book_alike_sorted(book_uuid, ra.sorter)
         print("(e)Sorted by number of readers of the same document")
         print(book_alike_sorted)
+
+        user_books_alike = ra.user_visitors_alike(user_uuid)
+        print("(Extra)Similar users based on common book read")
+        print(user_books_alike)
+
+        visitors_books_alike = ra.book_visitors_alike(book_uuid)
+        print("(Extra)Similar books based on user reader")
+        print(visitors_books_alike)
 
     except Exception as err:
         print((str(err)))
