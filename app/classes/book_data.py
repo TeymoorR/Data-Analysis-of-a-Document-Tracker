@@ -8,5 +8,5 @@ class BookData:
 
     def build_data_frame(self):
         """ Return pandas object Read Issue data from file."""
-        document_data = pd.read_json(self.__source_file)
-        return document_data
+        book_data = pd.read_json(self.__source_file)
+        return book_data

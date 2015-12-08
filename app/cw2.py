@@ -6,7 +6,7 @@ from classes.user_analysis import UserAnalysis
 import sys
 import getopt
 
-bd = BookData('data/issuu_full.json')
+bd = BookData('data/100k.json')
 dt = bd.build_data_frame()
 
 
@@ -119,12 +119,12 @@ def main(argv):
             print(" No doc_uuid supplied")
         else:
             task_2(doc_uuid)
-            print("Histograms for per country been saved in : Graphs/results/countries_to_book_UUID.png")
-            print("Histograms for per continent been saved in : Graphs/results/continent_to_book_UUI.png")
+            print("Histograms for per country been saved in : Graphs/countries_to_book_UUID.png")
+            print("Histograms for per continent been saved in : Graphs/continent_to_book_UUI.png")
     elif int(task_id) == 3:
         task_3()
-        print("Histograms of browser usage has been saved in 'Graphs/results/simple_browser_usage.png' ")
-        print("Histograms of generalised browser usage has been saved in 'Graphs/results/general_browser_usage.png")
+        print("Histograms of browser usage has been saved in 'Graphs/simple_browser_usage.png' ")
+        print("Histograms of generalised browser usage has been saved in 'Graphs/general_browser_usage.png")
     elif int(task_id) == 4:
         print("10 most active readers")
         task_4(10)

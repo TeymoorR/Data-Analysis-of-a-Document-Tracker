@@ -3,7 +3,6 @@ import pandas as pd
 
 
 class BrowserAnalysis:
-
     __main_browsers = ["opera", "dalvik", "safari", "chrome", 'trident', 'mozilla']
     __labels = ["ts", "visitor_uuid", "visitor_source", "visitor_device", "visitor_useragent",
                 "visitor_ip", "visitor_country", "visitor_referrer"]

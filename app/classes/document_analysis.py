@@ -32,7 +32,7 @@ class DocumentAnalysis:
     def counries_by_book_plot(self, by_country, UUID):
         """Create a Histogram of Countries to Popularity """
         by_country = by_country.plot(kind='bar')
-        plt.savefig('Graphs/results/countries_to_book_' + UUID + '.png')
+        plt.savefig('Graphs/countries_to_book_' + UUID + '.png')
 
     def continent_by_book(self, result_countries, uuid):
         by_country = result_countries.to_dict()
@@ -49,4 +49,4 @@ class DocumentAnalysis:
     def continent_by_book_plot(self, by_continent, UUID):
         by_continent_data = Series(list(by_continent.values()), list(by_continent.keys()))
         by_continent_data.plot(kind='bar')
-        plt.savefig('Graphs/results/continent_to_book_' + UUID + '.png')
+        plt.savefig('Graphs/continent_to_book_' + UUID + '.png')
